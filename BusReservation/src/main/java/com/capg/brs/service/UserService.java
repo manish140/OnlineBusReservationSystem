@@ -1,4 +1,4 @@
-package com.cpg.obrs.service;
+package com.capg.brs.service;
 
 public interface UserService {
 

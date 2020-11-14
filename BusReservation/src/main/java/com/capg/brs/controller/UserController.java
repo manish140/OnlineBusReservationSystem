@@ -1,4 +1,4 @@
-package com.cpg.obrs.controller;
+package com.capg.brs.controller;
 
 public class UserController {
 

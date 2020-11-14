@@ -1,4 +1,4 @@
-package com.cpg.obrs.model;
+package com.capg.brs.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
