@@ -1,4 +1,4 @@
-package com.cpg.obrs;
+package com.capg.brs;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
