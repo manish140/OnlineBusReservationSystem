@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Table(name="schedule8")
 @Entity
-public class schedule {
+public class Schedule {
 
 	@Id
 	private Long scheduleId;
