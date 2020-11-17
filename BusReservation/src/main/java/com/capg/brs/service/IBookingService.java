@@ -8,8 +8,8 @@ import com.capg.brs.entity.Booking;
 public interface IBookingService {
 
 	
-	Booking addBooking(Booking booking);
-	 Optional<Booking> getBookingById(String bookingId);
-		List<Booking> getAllBookings();
-		void deleteBooking(String BookingId);
+	  public Booking addBooking(Booking booking);
+	  public Booking getBookingById(String bookingId);
+	  public List<Booking> getAllBookings();
+	  public void deleteBooking(String BookingId);
 }
