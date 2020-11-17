@@ -1,9 +1,15 @@
 package com.capg.brs.entity;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -12,10 +18,25 @@ import javax.persistence.Table;
 public class Booking {
        
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long bookingId;
-	private User userId;
-	private Bus busId;
-	private Date bookingDate;
+	
+	@ManyToOne
+	private Bus bus;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "userid")
+	private User user;
+
+	private String source;
+	private String destination;
+	
+	
+	
+	private LocalDate dateOfJourney;
+
+	private LocalDate dateOfBooking;
+	
 	private Double ticketCost;
 	private Integer noOfPassengers;
 	public Long getBookingId() {
@@ -24,23 +45,41 @@ public class Booking {
 	public void setBookingId(Long bookingId) {
 		this.bookingId = bookingId;
 	}
-	public User getUserId() {
-		return userId;
+	public Bus getBus() {
+		return bus;
 	}
-	public void setUserId(User userId) {
-		this.userId = userId;
+	public void setBus(Bus bus) {
+		this.bus = bus;
 	}
-	public Bus getBusId() {
-		return busId;
+	public User getUser() {
+		return user;
 	}
-	public void setBusId(Bus busId) {
-		this.busId = busId;
+	public void setUser(User user) {
+		this.user = user;
 	}
-	public Date getBookingDate() {
-		return bookingDate;
+	public String getSource() {
+		return source;
 	}
-	public void setBookingDate(Date bookingDate) {
-		this.bookingDate = bookingDate;
+	public void setSource(String source) {
+		this.source = source;
+	}
+	public String getDestination() {
+		return destination;
+	}
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+	public LocalDate getDateOfJourney() {
+		return dateOfJourney;
+	}
+	public void setDateOfJourney(LocalDate dateOfJourney) {
+		this.dateOfJourney = dateOfJourney;
+	}
+	public LocalDate getDateOfBooking() {
+		return dateOfBooking;
+	}
+	public void setDateOfBooking(LocalDate dateOfBooking) {
+		this.dateOfBooking = dateOfBooking;
 	}
 	public Double getTicketCost() {
 		return ticketCost;
@@ -54,4 +93,12 @@ public class Booking {
 	public void setNoOfPassengers(Integer noOfPassengers) {
 		this.noOfPassengers = noOfPassengers;
 	}
+	
+
+
+	
+
+	
+
+	
 }
