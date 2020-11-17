@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.capg.brs.entity.Booking;
 
-public interface BookingService {
+public interface IBookingService {
 
 	
 	Booking addBooking(Booking booking);

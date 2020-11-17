@@ -1,5 +1,5 @@
 package com.capg.brs.service;
 
-public interface BusService {
+public interface IUserService {
 
 }
