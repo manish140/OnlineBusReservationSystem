@@ -8,7 +8,6 @@ import com.capg.brs.entity.User;
 @Repository
 public interface IUserRepository extends JpaRepository<User,Integer>{
 
+
+
 }
-
-
-

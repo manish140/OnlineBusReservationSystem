@@ -6,19 +6,22 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="WalletUserDetails")
+@Table(name="UserDetails")
 public class User {
 	@Id
 	private int userId;
 	private String userName;
 	private String phoneNumber;
+	private String email;
 	private String password;
-	private String loginName;
-	//one to one relationship between WalletUser and WalletAccount
-	@OneToOne(mappedBy="walletUser",cascade=CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval=true)
+	private String confirmpassword;
+	
+	//one to one relationship between User and Account
+	@OneToOne(mappedBy="User",cascade=CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval=true)
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 
 	public int getUserId() {
@@ -39,19 +42,28 @@ public class User {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getLoginName() {
-		return loginName;
-	}
-	public void setLoginName(String loginName) {
-		this.loginName = loginName;
 	
+	public String getConfirmpassword() {
+		return confirmpassword;
 	}
+	public void setConfirmpassword(String confirmpassword) {
+		this.confirmpassword = confirmpassword;
+	}
+	
+
 	public boolean existById(int userId2) {
 		// TODO Auto-generated method stub
 		return false;
@@ -60,7 +72,8 @@ public class User {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
+
 
 
 }
