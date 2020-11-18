@@ -1,39 +1,30 @@
 package com.capg.brs.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Table(name="user8")
 @Entity
+@Table(name="WalletUserDetails")
 public class User {
-
-	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long userId;
+	private int userId;
 	private String userName;
-	private String userPassword;
-	private Long userPhone;
-	private String userEmail;
-	
-	public User(Long userId,String userName,String userPassword,Long userPhone,String userEmail) {
-		this.userId=userId;
-		this.userName=userName;
-		this.userPassword=userPassword;
-		this.userPhone=userPhone;
-		this.userEmail=userEmail;
-	}
-	public User() {
-		super();
-	}
-	
-	public Long getUserId() {
+	private String phoneNumber;
+	private String password;
+	private String loginName;
+	//one to one relationship between WalletUser and WalletAccount
+	@OneToOne(mappedBy="walletUser",cascade=CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval=true)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(Long userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public String getUserName() {
@@ -42,23 +33,34 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getUserPassword() {
-		return userPassword;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
-	public Long getUserPhone() {
-		return userPhone;
+	public String getPassword() {
+		return password;
 	}
-	public void setUserPhone(Long userPhone) {
-		this.userPhone = userPhone;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getUserEmail() {
-		return userEmail;
+	public String getLoginName() {
+		return loginName;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	
+	}
+	public boolean existById(int userId2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	public User getOne(int userId2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
+
+
 }
