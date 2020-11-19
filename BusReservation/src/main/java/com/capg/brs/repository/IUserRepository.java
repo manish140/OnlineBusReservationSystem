@@ -1,3 +1,4 @@
+
 package com.capg.brs.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,3 +14,5 @@ public interface IUserRepository extends JpaRepository<User,Integer>{
 
 
 }
+
+
