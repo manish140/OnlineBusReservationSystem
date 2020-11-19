@@ -1,5 +1,6 @@
-
 package com.capg.brs.service;
+
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -25,7 +26,9 @@ public class UserServiceImpl implements IUserService {
 		 dao.save(user);
 		 return "account successfully created";
 	}
-
+	 public List<User> viewUsers(){
+	    	return IUserRepository.findaAll();
+	    }
 	
 	public User userLogin(int userId,String password)
 	{
@@ -46,7 +49,7 @@ public class UserServiceImpl implements IUserService {
 				return null;
 			}
 		}
-		else
+	   else
 		{
 			return null;
 		}

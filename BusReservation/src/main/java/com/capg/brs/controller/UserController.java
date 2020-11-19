@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.capg.brs.entity.User;
 import com.capg.brs.exceptions.UserNotFoundException;
 import com.capg.brs.service.IUserService;
-
-
 @RestController
 @RequestMapping("/Bus")
 @CrossOrigin("http://localhost:4200")
@@ -40,12 +38,6 @@ public class UserController {
 			}
 			
 		}
-	
-	
-	
-	
-	
-	
 	
 	@GetMapping("/userlogin/{userId}/{password}")
 	public ResponseEntity<User> userLogin(@PathVariable("userId") int userId,@PathVariable("password") String password)

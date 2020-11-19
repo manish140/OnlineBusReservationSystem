@@ -1,4 +1,3 @@
-
 package com.capg.brs.service;
 
 import org.springframework.stereotype.Service;
@@ -13,5 +12,3 @@ public interface IUserService {
 	
 	public String register(User user);
 }
-=======
-

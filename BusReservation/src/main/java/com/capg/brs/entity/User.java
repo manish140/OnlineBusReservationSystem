@@ -10,9 +10,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-
-@Table(name="User8")
-
+@Table(name="UserDetails")
 public class User {
 	@Id
 	private int userId;
@@ -22,7 +20,7 @@ public class User {
 	private String password;
 	private String confirmpassword;
 	
-	//one to one relationship between User and Account
+
 	@OneToOne(mappedBy="User",cascade=CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval=true)
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 
@@ -65,7 +63,6 @@ public class User {
 		this.confirmpassword = confirmpassword;
 	}
 	
-
 	public boolean existById(int userId2) {
 		// TODO Auto-generated method stub
 		return false;
@@ -74,10 +71,12 @@ public class User {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public java.util.List<User> findaAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	}
 
-
-
-
-
-}
-
+	
