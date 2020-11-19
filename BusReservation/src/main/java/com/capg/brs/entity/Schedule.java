@@ -1,9 +1,14 @@
 package com.capg.brs.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -13,41 +18,48 @@ import javax.persistence.Table;
 public class Schedule {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long scheduleId;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "busId") 
+	private Bus busId;
 	@ManyToOne
-	private Bus bus;
-	private String source;
-	private String destination;
-	private LocalDate arrivalTime;
-	private LocalDate departureTime;
-	public Bus getBus() {
-		return bus;
+	private Route route;
+	private LocalDateTime arrivalTime;
+	private LocalDateTime departureTime;
+	
+	
+	public Long getScheduleId() {
+		return scheduleId;
 	}
-	public void setBus(Bus bus) {
-		this.bus = bus;
+	public void setScheduleId(Long scheduleId) {
+		this.scheduleId = scheduleId;
 	}
-	public String getSource() {
-		return source;
+	
+
+	
+	public Bus getBusId() {
+		return busId;
 	}
-	public void setSource(String source) {
-		this.source = source;
+	public void setBusId(Bus busId) {
+		this.busId = busId;
 	}
-	public String getDestination() {
-		return destination;
+	public Route getRoute() {
+		return route;
 	}
-	public void setDestination(String destination) {
-		this.destination = destination;
+	public void setRoute(Route route) {
+		this.route = route;
 	}
-	public LocalDate getArrivalTime() {
+	public LocalDateTime getArrivalTime() {
 		return arrivalTime;
 	}
-	public void setArrivalTime(LocalDate arrivalTime) {
+	public void setArrivalTime(LocalDateTime arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
-	public LocalDate getDepartureTime() {
+	public LocalDateTime getDepartureTime() {
 		return departureTime;
 	}
-	public void setDepartureTime(LocalDate departureTime) {
+	public void setDepartureTime(LocalDateTime departureTime) {
 		this.departureTime = departureTime;
 	}
 }

@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.brs.entity.User;
+import com.capg.brs.exceptions.UserNotFoundException;
 import com.capg.brs.service.IUserService;
 
-import exceptions.IdNotFoundException;
+
 @RestController
 @RequestMapping("/Bus")
 @CrossOrigin("http://localhost:4200")
@@ -55,7 +56,7 @@ public class UserController {
 		User login=service.userLogin(userId, password);
 		if(login==null)
 		{
-			throw new IdNotFoundException("User does not exist");
+			throw new UserNotFoundException("User does not exist");
 		}
 		else
 		{
