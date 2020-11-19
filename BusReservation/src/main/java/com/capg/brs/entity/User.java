@@ -1,39 +1,33 @@
 package com.capg.brs.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Table(name="user8")
-@Entity
-public class User {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-	
+@Entity
+@Table(name="User8")
+public class User {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long userId;
+	private int userId;
 	private String userName;
-	private String userPassword;
-	private Long userPhone;
-	private String userEmail;
+	private String phoneNumber;
+	private String email;
+	private String password;
+	private String confirmpassword;
 	
-	public User(Long userId,String userName,String userPassword,Long userPhone,String userEmail) {
-		this.userId=userId;
-		this.userName=userName;
-		this.userPassword=userPassword;
-		this.userPhone=userPhone;
-		this.userEmail=userEmail;
-	}
-	public User() {
-		super();
-	}
-	
-	public Long getUserId() {
+	//one to one relationship between User and Account
+	@OneToOne(mappedBy="User",cascade=CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval=true)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(Long userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public String getUserName() {
@@ -42,23 +36,44 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getUserPassword() {
-		return userPassword;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
-	}
-	public Long getUserPhone() {
-		return userPhone;
-	}
-	public void setUserPhone(Long userPhone) {
-		this.userPhone = userPhone;
-	}
-	public String getUserEmail() {
-		return userEmail;
-	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public String getConfirmpassword() {
+		return confirmpassword;
+	}
+	public void setConfirmpassword(String confirmpassword) {
+		this.confirmpassword = confirmpassword;
+	}
+	
+
+	public boolean existById(int userId2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	public User getOne(int userId2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
 }
